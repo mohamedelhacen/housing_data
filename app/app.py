@@ -6,8 +6,8 @@ app = Flask(__name__)
 app.config['DEBUG']=True
 
 
-pipeline = joblib.load('pipeline.pkl')
-model = joblib.load('forest_reg.pkl')
+pipeline = joblib.load('static/pipeline.pkl')
+model = joblib.load('static/forest_reg.pkl')
 
 
 @app.route('/', methods=["GET", "POST"])
