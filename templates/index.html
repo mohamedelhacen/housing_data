@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>California Housing Prices</title>
+	<link rel="stylesheet" type="text/css" href="static/my_style.css" />
+</head>
+
+<body>
+	<h1>California Housing Prices</h1>
+	<div class="theformimg">
+		<div class="theform">
+			<form action={{ url_for("index") }} method="post">
+			
+				<label for="longitude" class="lab">Longitude:</label><br>
+				<input type="text" id="logitude" name="longitude" value=-119.0><br>
+				
+				<label for="latitude" class="lab">Latitude:</label><br>
+				<input type="text" id="latitude" name="latitude" value=35.0><br>
+
+				<label for="age" class="lab">Age:</label><br>
+				<input type="text" id="age" name="age" value=28.0><br>
+
+				<label for="totalrooms" class="lab">Total Rooms:</label><br>
+				<input type="text" id="totalrooms" name="totalrooms" value=2635.0><br>
+
+				<label for="totalbedrooms" class="lab">Total Bedrooms:</label><br>
+				<input type="text" id="totalbedrooms" name="totalbedrooms" value=537.0><br>
+
+				<label for="population" class="lab">Population:</label><br>
+				<input type="text" id="population" name="population" value=1425.0><br>
+
+				<label for="households" class="lab">Housse Holds:</label><br>
+				<input type="text" id="households" name="households" value=499.0><br>
+
+				<label for="income" class="lab">Income:</label><br>
+				<input type="text" id="income" name="income" value=8.3252><br>
+
+				<label for="oceanproximity" class="lab">Ocean Proximity:</label><br>
+				<select name="oceanproximity" id="oceanproximity">
+					<option value="&lt;1H OCEAN">&lt1H OCEAN</option>
+					<option value="INLAND">INLAND</option>
+					<option value="NEAR OCEAN">NEAR OCEAN</option>
+					<option value="NEAR BAY">NEAR BAY</option>
+					<option value="ISLAND">ISLAND</option>
+				</select>
+				<br>
+				<input type="submit" value="Submit">
+				
+			</form>	
+		</div>	
+
+		<div class="theimage">
+		<img src="https://images.unsplash.com/photo-1519227355453-8f982e425321?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" alt="California" />
+		</div>
+		
+	</div>
+	
+	{% if res %}
+		<p>For these values:</p>
+		<div class="thetable">
+		<table border=1 frame="hsides" rules="rows">
+			<tr class="row">
+				{% for col in cols %}
+					<th class="row">{{ col }}</th>
+				{% endfor %}
+			</tr>
+			<tr class="row">
+				{% for el in rows %}
+					<td class="row">{{ el[0] }}</td>
+				{% endfor %}
+			</tr>
+			
+		</table>
+		</div>
+		<div class="result">
+			<p>The median house value is {{ res[0] }}</p>
+		</div>
+		
+	{% endif %}
+</body>
+</html>
