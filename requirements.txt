@@ -38,6 +38,7 @@ pexpect==4.8.0
 pickleshare==0.7.5
 platformdirs==2.5.4
 prompt-toolkit==3.0.33
+wheel
 ptyprocess==0.7.0
 pure-eval==0.2.2
 Pygments==2.13.0
