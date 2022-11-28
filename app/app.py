@@ -6,8 +6,8 @@ app = Flask(__name__)
 app.config['DEBUG']=True
 
 
-pipeline = joblib.load('static/pipeline.pkl')
-model = joblib.load('static/forest_reg.pkl')
+pipeline = joblib.load('/static/pipeline.pkl')
+model = joblib.load('/static/forest_reg.pkl')
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -30,7 +30,7 @@ def index():
 		[income], [oceanproximity]]
 
 		housing = pd.DataFrame.from_dict(dict(zip(columns, vals)))
-		housing.to_csv('static/housing.csv', index=False)
+		housing.to_csv('/static/housing.csv', index=False)
 
 		housing_prepared = pipeline.transform(housing)
 		result = model.predict(housing_prepared)
