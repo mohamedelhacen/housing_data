@@ -6,7 +6,7 @@ RUN apt-get update
 
 COPY requirements.txt requirements.txt
 # RUN python -m venv venv
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY app app
 COPY wsgi.py runtime.txt boot.sh ./
