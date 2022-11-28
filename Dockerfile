@@ -11,4 +11,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY app app
 COPY wsgi.py runtime.txt boot.sh ./
 
-CMD exec gunicorn -b 0.0.0.0:5000 --access-logfile - --error-logfile - wsgi:app
+CMD exec gunicorn -b :5000 --workers 1 --threads 8 --access-logfile - --error-logfile - wsgi:app
