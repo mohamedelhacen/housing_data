@@ -5,9 +5,10 @@ USER california
 
 WORKDIR /home/california
 
-COPY requirements.txt requirements.txt
-RUN python -m venv venv
-RUN venv/bin/pip install -r requirements.txt
+COPY requirements.yml requirements.yml
+# RUN python -m venv venv
+# RUN venv/bin/pip install -r requirements.txt
+RUN conda env create -f environment.yml 
 
 COPY app app
 COPY wsgi.py runtime.txt boot.sh ./
